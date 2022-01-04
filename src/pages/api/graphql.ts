@@ -5,16 +5,7 @@ import {
 	GraphQLUpload,
 	GraphQLOperation,
 } from "graphql-upload";
-
-const typeDefs = gql`
-	scalar Upload
-	type Query {
-		hello: String!
-	}
-	type Mutation {
-		singleUpload(file: Upload!): Boolean
-	}
-`;
+import typeDefs from "../../lib/typeDefs";
 
 const resolvers = {
 	Upload: GraphQLUpload,
@@ -23,6 +14,7 @@ const resolvers = {
 	},
 	Mutation: {
 		singleUpload: async (_req: any, { file }: { file: any }) => {
+			console.log(file);
 			return false;
 		},
 	},
